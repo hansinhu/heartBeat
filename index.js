@@ -1,11 +1,9 @@
-import config from './config'
-// import axios from '../../plugins/axios';
-
 function HeartBeat() {}
 HeartBeat.prototype.start = function (pInfo) {
   this.params.productType = 3
   this.params.productId = pInfo.pagecode
   this.params.shopId = pInfo.shopId
+  this.params.analyticsHost = pInfo.analyticsHost
   this.device()
   this.detectOS()
   this.browserRedirect()
@@ -41,7 +39,7 @@ HeartBeat.prototype.toBeat = function (data) {
   }
   var datahb = data.data
   localStorage.setItem('pageviewCookie', datahb.cookie || '')
-  var hburl = config.analyticsHost +'/collection/heartbeat?pageViewId=' + datahb.pageViewId + '&cookie=' + datahb.cookie
+  var hburl = this.params.analyticsHost +'/collection/heartbeat?pageViewId=' + datahb.pageViewId + '&cookie=' + datahb.cookie
   kjax(hburl, 'GET', function() {})
   window.setInterval(function() {
     kjax(hburl, 'GET', function() {})
@@ -60,8 +58,7 @@ HeartBeat.prototype.doHeart = function (preload) {
   /**
    * 发送PV 以及统计数据
    */
-  // axios.post(config.collectHost + '/buyer/pageview/collect', params || {}})
-  kjax(config.collectHost + '/buyer/pageview/collect', 'POST', this.toBeat, args)
+  kjax(this.params.analyticsHost + '/buyer/pageview/collect', 'POST', this.toBeat, args)
   // this.toBeat(args)
 }
 
