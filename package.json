@@ -1,0 +1,23 @@
+{
+  "name": "heartbeat",
+  "version": "1.0.0",
+  "description": "heartbeat statistics",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hansinhu/heartBeat.git"
+  },
+  "keywords": [
+    "heartbeat",
+    "statistics"
+  ],
+  "author": "hansinhu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hansinhu/heartBeat/issues"
+  },
+  "homepage": "https://github.com/hansinhu/heartBeat#readme"
+}
